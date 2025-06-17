@@ -2,9 +2,10 @@ const express = require('express');
 const router=express.Router()
 const bcrypt = require('bcrypt');
 const { User } = require('../models/User.js');
-
-
 const otpStore=require('../otpstore.js')
+
+
+
 
 router.post('/resetpassword', async (req, res) => {
     const { newPassword, confirmPassword } = req.body;

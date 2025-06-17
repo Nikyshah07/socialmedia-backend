@@ -30,6 +30,9 @@ const authentiCate = require('../middleware');
 const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 
+
+
+
 router.get('/getlikes/:postId', authentiCate, async (req, res) => {
   const postId = req.params.postId;
   const userId = req.user.userId;

@@ -4,6 +4,9 @@ const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 const router=express.Router();
 
+
+
+
 router.get('/getcomments/:id',authentiCate,async(req,res)=>{
     const id=req.params.id;
     const userId=req.user.userId;

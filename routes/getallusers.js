@@ -3,6 +3,9 @@ const router=express.Router();
 const {User}=require('../models/User');
 const authentiCate=require('../middleware');
 
+
+
+
 // router.get('/getAllUsers',authentiCate,async(req,res)=>{
 //     try{
 //     const loginUserId=req.user.userId

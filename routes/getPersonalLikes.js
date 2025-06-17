@@ -3,6 +3,8 @@ const router = express.Router();
 const authentiCate = require('../middleware');
 const { Post } = require('../models/Post');
 
+
+
 // Route: GET /getpersonallike - Get all likes for current user's posts
 router.get('/getpersonallike', authentiCate, async (req, res) => {
     const userId = req.user.userId; // Current logged-in user

@@ -2,7 +2,6 @@ const express=require('express');
 const router=express.Router();
 const {User}=require('../models/User');
 const authentiCate = require('../middleware');
-
 router.post('/unfollow/:id',authentiCate,async(req,res)=>{
     const id=req.params.id;
     const userId=req.user.userId;

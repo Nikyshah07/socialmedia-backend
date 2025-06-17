@@ -4,6 +4,9 @@ const {User}=require('../models/User');
 const multer = require('multer');
 const authentiCate=require('../middleware')
 
+
+
+
 // Multer setup (store in memory, not disk)
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });

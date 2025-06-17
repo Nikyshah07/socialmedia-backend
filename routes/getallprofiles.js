@@ -29,7 +29,11 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models/User');
-const authentiCate = require('../middleware'); // Your auth middleware
+const authentiCate = require('../middleware'); 
+
+
+
+
 
 // GET user profile by ID, including photo
 router.get('/getallprofiles/:id', authentiCate, async (req, res) => {

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const otpStore = require('../otpstore.js'); 
 
+
 router.post('/verifyOtp', async (req, res) => {
     const {otp} = req.body;  
     const emailEntry = Object.keys(otpStore).find(email => otpStore[email].otp === parseInt(otp));

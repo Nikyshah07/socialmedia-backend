@@ -36,5 +36,5 @@ const postschema=new mongoose.Schema({
 {timestamps: true} // Automatically add createdAt and updatedAt fields
 );
 
-const Post=mongoose.model('Post',postschema)
+ const Post=mongoose.model('Post',postschema)
 module.exports={Post}

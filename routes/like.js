@@ -3,6 +3,9 @@ const authentiCate = require('../middleware');
 const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 const router=express.Router()
+
+
+
 const sendNotification = require('../utils/sendNotification'); // Add this
 router.post('/like/:id',authentiCate,async(req,res)=>{
     const id=req.params.id;

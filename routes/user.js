@@ -4,6 +4,9 @@ const router = express.Router();
 const { User } = require("../models/User");
 const authentiCate = require("../middleware");
 
+
+
+
 router.post("/save-fcm-token", authentiCate, async (req, res) => {
   const userId = req.user.userId;
   const { token } = req.body;

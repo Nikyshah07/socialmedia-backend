@@ -4,26 +4,8 @@ const {User}=require('../models/User');
 const authentiCate = require('../middleware');
 const { Post } = require('../models/Post');
 
-// router.get('/getuserpost',authentiCate,async(req,res)=>{
-//    const userId=req.user.userId;
-//    try{
-//       const user=await User.findById(userId) 
-//       if(!userId)
-//       {
-//         return res.status(404).json({message:'User not found'})
-//       }
-//       const posts=await Post.find({user:userId})
-//       res.status(200).json({posts})
-//       console.log(user)
-//       console.log(posts)
 
-       
-//    }
-//    catch(err)
-//    {
-//     return res.status(404).json({message:'Error during fetching user posts'})
-//    }
-// })
+
 
 
 router.get('/getuserpost', authentiCate, async (req, res) => {

@@ -1,6 +1,7 @@
 // backend/utils/sendNotification.js
 const admin = require("../firebase");
 
+
 const sendNotification = async (fcmToken, title, body) => {
   const message = {
     notification: {

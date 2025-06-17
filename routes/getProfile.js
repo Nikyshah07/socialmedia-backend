@@ -3,6 +3,8 @@ const router=express.Router();
 const {User}=require('../models/User');
 const authentiCate = require('../middleware');
 
+
+
 router.get('/getprofile/:id',authentiCate, async(req,res)=>{
 
     

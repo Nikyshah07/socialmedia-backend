@@ -1,10 +1,12 @@
-// PUT /api/user/save-fcm-token
+
 
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 const authentiCate = require('../middleware');
+
+
 router.put('/save-fcm-token', authentiCate, async (req, res) => {
   const { token } = req.body;
   const userId = req.user.userId;

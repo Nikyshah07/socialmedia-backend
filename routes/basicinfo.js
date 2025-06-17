@@ -3,6 +3,9 @@ const router = express.Router();
 const { User } = require('../models/User');
 const authentiCate = require('../middleware');
 
+
+
+
 router.get('/basic/:id', authentiCate, async (req, res) => {
   const id = req.params.id;
 
