@@ -29,7 +29,7 @@ if (postOwner && postOwner.fcmToken && postOwner._id.toString() !== userId) {
   );
 }
 
-  
+  return res.status(200).json({message:'Comment added successfully'})
     // return res.status(200).json({message:'you have comment on this post'})
 }
     catch(err)
