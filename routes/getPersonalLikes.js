@@ -30,10 +30,12 @@ router.get('/getpersonallike', authentiCate, async (req, res) => {
                     postCaption: post.caption || 'No caption',
                     postLocation: post.location || '',
                     postCreatedAt: post.createdAt,
-                    postImage: post.image ? {
-                        data: post.image.data.toString('base64'),
-                        contentType: post.image.contentType
-                    } : null,
+                    // postImage: post.image ? {
+                    //     data: post.image.data.toString('base64'),
+                    //     contentType: post.image.contentType
+                    // } : null,
+                    postImage: post.image || null,
+
                     likedBy: {
                         userId: likedUser._id,
                         name: likedUser.name,

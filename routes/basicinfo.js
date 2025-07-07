@@ -31,13 +31,7 @@ router.get('/basic/:id', authentiCate, async (req, res) => {
 
     const userObj = user.toObject();
 
-    // Convert photo to base64 if it exists
-    if (userObj.photo && userObj.photo.data) {
-      userObj.photo = {
-        contentType: userObj.photo.contentType,
-        data: userObj.photo.data.toString('base64'),
-      };
-    }
+    
 
     res.status(200).json({
       message: 'Basic user info fetched',

@@ -33,6 +33,7 @@ router.post('/resetpassword', async (req, res) => {
       const isSamePassword = await bcrypt.compare(newPassword, user.password);
       if (isSamePassword) {
         return res.status(400).json({  success: false ,message: 'New password must be different from the old password' });
+     
       }
   
       

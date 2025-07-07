@@ -20,17 +20,11 @@ router.get('/getalluserspost', authentiCate, async (req, res) => {
 
     // Map posts with correct user and post data
     const updatedPosts = posts.map((post) => {
-      // Handle USER profile photo
-      let userProfilePhoto = null;
-      if (post.user.photo && post.user.photo.data) {
-        userProfilePhoto = `data:${post.user.photo.contentType};base64,${post.user.photo.data.toString('base64')}`;
-      }
 
-      // Handle POST image (your model uses 'image' field)
-      let postImage = null;
-      if (post.image && post.image.data) {
-        postImage = `data:${post.image.contentType};base64,${post.image.data.toString('base64')}`;
-      }
+
+      let userProfilePhoto = post.user.photo || null;
+let postImage = post.image || null;
+
 
       // Debug: Log to check if image exists
       console.log(`Post ${post._id}:`, {
@@ -55,6 +49,7 @@ router.get('/getalluserspost', authentiCate, async (req, res) => {
         postPhoto: postImage,           // The actual post image/content
         likesCount: post.likes?.length || 0,
         commentsCount: post.comments?.length || 0,
+        saved_by: post.saved_by || [],
       };
     });
 

@@ -4,11 +4,16 @@ const userSchema=new mongoose.Schema({
         type:String,
         default:null
     },
-    photo:
-    {
-       data: Buffer,           // store binary data
-    contentType: String 
-    },
+    // photo:
+    // {
+    //    data: Buffer,           // store binary data
+    // contentType: String 
+    // },
+    photo: {
+  type: String,
+  default: '',
+},
+
     bio:{
   type:String,
   default:null,
@@ -49,6 +54,9 @@ const userSchema=new mongoose.Schema({
   type: mongoose.Schema.Types.ObjectId,
   ref: 'Post'
 }],
+// User.js
+newLikeNotifications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+
 fcmToken: {
     type: String,
     default: null,

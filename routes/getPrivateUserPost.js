@@ -4,37 +4,27 @@ const authentiCate = require('../middleware');
 const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 
-
-
-
 router.get('/getprivateuserpost/:id', authentiCate, async (req, res) => {
-    const id = req.params.id;
-    const userId = req.user.userId;
+  const id = req.params.id;
 
-    try {
-        const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
+  try {
+    const posts = await Post.find({ user: id })
+      .populate('user', 'name photo')
+      .populate('likes', '_id')
+      .populate('comments.user', 'name');
 
-        const posts = await Post.find({ user: id })
-            .populate('likes', '_id') // Optional: add name or email if needed
-            .populate('comments.user', 'name'); // Optional: add photo
+    const formattedPosts = posts.map(post => ({
+      ...post._doc,
+      imageUrl: post.image || null, // Cloudinary URL directly
+      userPhoto: typeof post.user.photo === 'string' ? post.user.photo : null,
+      likesCount: post.likes.length,
+      commentsCount: post.comments.length
+    }));
 
-        // Convert image buffer to base64
-        const formattedPosts = posts.map(post => ({
-            ...post._doc,
-            imageUrl: post.image.data
-                ? `data:${post.image.contentType};base64,${post.image.data.toString('base64')}`
-                : null,
-            likesCount: post.likes.length,
-            commentsCount: post.comments.length
-        }));
-
-        return res.status(200).json({ posts: formattedPosts });
-    } catch (err) {
-        return res.status(500).json({ message: 'Error in fetching post' });
-    }
+    return res.status(200).json({ posts: formattedPosts });
+  } catch (err) {
+    return res.status(500).json({ message: 'Error in fetching post' });
+  }
 });
 
 

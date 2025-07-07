@@ -17,13 +17,7 @@ router.get('/getprofile/:id',authentiCate, async(req,res)=>{
         return res.status(404).json({message:'user not found'})
       }
        const userObj = user.toObject();
-       console.log(userObj)
-    if (userObj.photo && userObj.photo.data) {
-      userObj.photo = {
-        contentType: userObj.photo.contentType,
-        data: userObj.photo.data.toString('base64')
-      };
-    }
+    
       res.status(200).json({message:userObj})
     }
     catch(err)

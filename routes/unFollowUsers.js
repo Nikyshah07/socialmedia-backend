@@ -14,7 +14,7 @@ router.post('/unfollow/:id',authentiCate,async(req,res)=>{
 
     await User.findByIdAndUpdate(id,{$pull:{followers:userId}});
     await User.findByIdAndUpdate(userId,{$pull:{following:id}});
-    // return res.status(200).json({message:"you have unfollow this user"})
+    
 }
  catch(err)
     {

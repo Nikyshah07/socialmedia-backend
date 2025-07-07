@@ -44,7 +44,11 @@ const saveFcmToken=require('./routes/saveFcmToken')
 
 const getpersonallike=require('./routes/getPersonalLikes');
 
+const savePost=require('./routes/savePost');
+const getSavedPost=require('./routes/getSavedPost')
 
+const hasNewLike=require('./routes/hasNewLike');
+const clearLike=require('./routes/clearLike')
 
 const response=mongoose.connect(process.env.URL)
 if(response)
@@ -88,6 +92,11 @@ app.use('/',getPrivateUserPost)
 app.use('/',saveFcmToken)
 
 app.use('/',getpersonallike)
+app.use('/',savePost)
+app.use('/',getSavedPost)
+
+app.use('/',hasNewLike);
+app.use('/',clearLike)
 
 app.listen(process.env.PORT,()=>{
     console.log('Server started...');

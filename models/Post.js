@@ -10,8 +10,8 @@ const postschema=new mongoose.Schema({
     default: '',
   },
   image: {
-    data: Buffer,           // Store image in binary
-    contentType: String,    // e.g., 'image/jpeg'
+    type: String,
+    default: '',
   },
   location: {
     type: String,
@@ -32,6 +32,10 @@ const postschema=new mongoose.Schema({
       default: Date.now,
     },
   }],
+  saved_by: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+  }]
 },
 {timestamps: true} // Automatically add createdAt and updatedAt fields
 );
